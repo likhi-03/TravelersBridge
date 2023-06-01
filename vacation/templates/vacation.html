@@ -1,0 +1,97 @@
+{% extends 'index.html' %}
+{%load static%}
+{%block body%}
+<div class="fh5co-hero">
+	<div class="fh5co-overlay"></div>
+	<div class="fh5co-cover" data-stellar-background-ratio="0.5"
+		style="background-image: url(https://c4.wallpaperflare.com/wallpaper/551/299/734/sand-sea-beach-summer-star-hd-wallpaper-preview.jpg);">
+		<div class="desc">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 col-md-5">
+						<div class="tabulation animate-box">
+							<h1 style="text-align: center;margin: 20px;" >Search Tourist Spots</h1><br>
+							<form action="{% url 'vacation_search' %}" method="GET">
+								<div class="input-row">
+								<label for="city" style="margin-left: 5px;">Select a city:</label>
+								<select style="margin: 2px;" name="city" id="city" class="form-control mr-sm-2 selectpicker">
+									<option value="1">Hyderabad</option>
+									<option value="2">Mumbai</option>
+									<option value="3">Delhi</option>
+									<option value="4">Paris</option>
+									<option value="5">Singapore</option>
+									<option value="6">Japan</option>
+								</select><br>
+								<div class="col-xs-12">
+									<button type="submit" class="btn btn-primary btn-block" style="margin-top:20px;margin-bottom: 20px;">Search</button>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+
+
+	<div id="fh5co-tours" class="fh5co-section-gray">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+					<h3>Tourist Spots</h3>
+					<p>Tourist spots are popular attractions that offer a variety of experiences, from natural wonders
+						and
+						scenic landmarks to cultural and historical landmarks, and are often visited by travelers
+						seeking to
+						explore new destinations and create unforgettable memories.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+					<div href="#"><img
+							src="https://www.freewalldownload.com/download/beautiful-statue-of-liberty-new-york-city-hd-wallpapers-download/"
+							class="img-responsive">
+						<div class="desc">
+							<span></span>
+							<h3>New York</h3>
+							<span class="price">$1,000</span>
+							<a class="btn btn-primary btn-outline" href="https://en.wikipedia.org/wiki/New_York_City">Explore Now <i
+									class="icon-arrow-right22"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+					<div href="#"><img
+							src="https://c1.wallpaperflare.com/preview/242/61/108/landscape-sunset-rice-terraces-tradition.jpg"
+							class="img-responsive">
+						<div class="desc">
+							<span></span>
+							<h3>Philippines</h3>
+							<span class="price">$1,000</span>
+							<a class="btn btn-primary btn-outline" href="https://en.wikipedia.org/wiki/Philippines">Explore Now <i
+									class="icon-arrow-right22"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+					<div href="#"><img
+							src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aG9uZyUyMGtvbmd8ZW58MHx8MHx8&w=1000&q=80"
+							class="img-responsive">
+						<div class="desc">
+							<span></span>
+							<h3>Hongkong</h3>
+							<span>2 nights + Flight 4*Hotel</span>
+							<span class="price">$1,000</span>
+							<a class="btn btn-primary btn-outline" href="https://en.wikipedia.org/wiki/Hong_Kong">Explore Now<i
+									class="icon-arrow-right22"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	{% endblock %}

@@ -1,0 +1,102 @@
+{%extends 'index.html' %}
+{% block body %}
+{% load static%}
+<div class="fh5co-hero">
+	<div class="fh5co-overlay"></div>
+	<div class="fh5co-cover" data-stellar-background-ratio="0.5"style="background-image: url(https://the-manpower.com/wp-content/uploads/2020/12/Dubai-1080x675.jpg);">
+		<div class="desc">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 col-md-5">
+						<div class="tabulation animate-box">
+							<h1 style="text-align: center; margin:10px; margin-bottom: 40px;">Search Hotels</h1>
+							<form method="POST" action="{% url 'hotelsearch'%}">
+								{% csrf_token %}
+								<input style="margin-left: 120px;" type="text" name="location" placeholder="Enter location"><br><br><br>
+								<div class="col-xs-12">
+									<button type="submit" class="btn btn-primary">Search Hotel</button>
+								</div><br><br><br>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="fh5co-tours" class="fh5co-section-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+				<h3>Popular hotel &amp; hostel destinations</h3>
+				<p>Popular hotel and hostel destinations include cities and regions that offer a variety of
+					accommodations, ranging from luxury hotels to budget-friendly hostels, often located in popular
+					tourist areas with easy access to local attractions and amenities.</p>
+			</div>
+		</div>
+		<div class="row row-bottom-padded-md">
+			<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+				<div href="#"><img
+						src="https://www.freewalldownload.com/download/beautiful-statue-of-liberty-new-york-city-hd-wallpapers-download/"
+						class="img-responsive">
+					<div class="desc">
+						<span></span>
+						<h3>New York</h3>
+						<span>3 nights</span>
+						<span class="price">$1,000</span>
+						<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+				<div href="#"><img
+						src="https://c4.wallpaperflare.com/wallpaper/577/373/91/kayangan-lake-coron-islands-palawan-philippines-wallpaper-preview.jpg"
+						class="img-responsive">
+					<div class="desc">
+						<span></span>
+						<h3>Philippines</h3>
+						<span>4 nights</span>
+						<span class="price">$1,000</span>
+						<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+				<div href="#"><img
+						src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aG9uZyUyMGtvbmd8ZW58MHx8MHx8&w=1000&q=80"
+						class="img-responsive">
+					<div class="desc">
+						<span></span>
+						<h3>Hongkong</h3>
+						<span>2 nights</span>
+						<span class="price">$1,000</span>
+						<a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 animate-box">
+				<h2 class="heading-title">Travel Booking guide to book a perfect hotel</h2>
+			</div>
+			<div class="col-md-6 animate-box">
+				<p>Booking a hotel can be an overwhelming process, with so many options to choose from and various
+					factors to consider, such as location, amenities, and budget. However, with a few key steps and
+					considerations in mind, travelers can navigate the booking process and secure the perfect hotel for
+					their needs. Here's a travel booking guide to help you book a perfect hotel.</p>
+				<p>1.Determine your budget: Before you start looking for hotels, it's important to determine your
+					budget. Knowing your budget can help you narrow down your options and avoid overspending.</p>
+				<p>2.Choose your location: Consider what you want to do and see during your trip and choose a hotel in a
+					location that is convenient for your itinerary.</p>
+			</div>
+			<div class="col-md-6 animate-box">
+				<img class="img-responsive"
+					src="https://w0.peakpx.com/wallpaper/43/30/HD-wallpaper-travel-couple-lifestyle.jpg" alt="travel">
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock%}

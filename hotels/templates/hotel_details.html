@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Details</title>
+    <style type="text/css">
+        
+        *{
+          margin: 0;
+          padding: 0;
+          font-family: "Times New Roman", Times, serif;
+        }
+
+        body {
+  background: #fafafa url(https://jackrugile.com/images/misc/noise-diagonal.png);
+  color: #444;
+  font: 100%/30px 'Helvetica Neue', helvetica, arial, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-shadow: 0 1px 0 #fff;
+}
+
+strong {
+  font-weight: bold; 
+}
+
+em {
+  font-style: bold; 
+}
+
+table {
+  background: #f5f5f5;
+  border-collapse: separate;
+  box-shadow: inset 0 1px 0 #fff;
+  font-size: 25px;
+  line-height: 24px;
+  margin: 30px auto;
+  text-align: left;
+  width: 800px;
+} 
+
+th {
+  background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#ed6642, #ed6642);
+  border-left: 1px solid #555;
+  border-right: 1px solid #777;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #333;
+  box-shadow: inset 0 1px 0 #999;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 15px;
+  position: relative;
+  text-shadow: 0 1px 0 #000;  
+}
+
+th:after {
+  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+  content: '';
+  display: block;
+  height: 25%;
+  left: 0;
+  margin: 1px 0 0 0;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+}
+
+th:first-child {
+  border-left: 1px solid #777;  
+  box-shadow: inset 1px 1px 0 #999;
+}
+
+th:last-child {
+  box-shadow: inset -1px 1px 0 #999;
+}
+
+td {
+  border-right: 1px solid #fff;
+  border-left: 1px solid #e8e8e8;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 10px 15px;
+  position: relative;
+  transition: all 300ms;
+}
+
+td:first-child {
+  box-shadow: inset 1px 0 0 #fff;
+} 
+
+td:last-child {
+  border-right: 1px solid #e8e8e8;
+  box-shadow: inset -1px 0 0 #fff;
+} 
+
+tr {
+  background: url(https://jackrugile.com/images/misc/noise-diagonal.png); 
+}
+
+tr:nth-child(odd) td {
+  background: #f1f1f1 url(https://jackrugile.com/images/misc/noise-diagonal.png); 
+}
+
+tr:last-of-type td {
+  box-shadow: inset 0 -1px 0 #fff; 
+}
+
+tr:last-of-type td:first-child {
+  box-shadow: inset 1px -1px 0 #fff;
+} 
+
+tr:last-of-type td:last-child {
+  box-shadow: inset -1px -1px 0 #fff;
+} 
+
+tbody:hover td {
+  color: transparent;
+  text-shadow: 0 0 3px #aaa;
+}
+
+tbody:hover tr:hover td {
+  color: #444;
+  text-shadow: 0 1px 0 #fff;
+}
+
+        .outer{
+          width: 350px;
+          height: 400px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-200%, -45%);
+          box-shadow: 0px 20px 30px #666;
+        }
+    
+        .one {
+          background: #ED6642;
+          position: relative;
+        }
+        
+        h1 {
+          text-align: center;
+          position: relative;
+          line-height: 100px;
+          color: #2B2525;
+        }
+        p{
+          padding-left:51%;
+          padding-top:30px;
+          color:red;
+          font-size:30px;
+        }
+        img {
+          height: 180px;
+          width: 180px;
+          border-radius: 50%;
+        }
+    
+        .two {
+          text-align: center;
+          padding-top: 50px;
+        }
+    
+        a {
+          text-decoration: none;
+          color: #2B2525;
+          display: block;
+          margin-top: 10px;
+          transition: 3,5s;
+        }
+    
+        h2 {
+          color:#2B2525;
+        }
+        .one:before {
+          content: "";
+          position: absolute;
+          border-top: 25px solid #ED6642;
+          border-right: 25px solid transparent;
+          border-left: 25px solid transparent;
+          border-bottom: 25px solid transparent;
+          top: 100%;
+          left: 125px;
+    
+        }
+    
+
+        
+      </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="one">
+            <h1>{{ hotel.name }}</h1>
+        </div>
+          <div class="two">
+            <img src="{{ hotel.image.url }}" class="img-fluid" alt="{{ hotel.name }}" style="margin-top: -12px;">
+            
+            <h3>Location: {{ hotel.location }}</h3>
+            <h3>Rating: {{ hotel.rating }}</h3>
+        </div>
+      
+        <div class="three">
+        </div>
+      </div>
+    <hr><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h2 style="margin-left: 800px;margin-top: -400px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Available Rooms</h2>
+    {% if hotel.rooms.all %}
+        <table class="table" style="margin-left: 600px;">
+            <thead>
+                <tr>
+                    <th>Room Number</th>
+                    <th>Capacity</th>
+                    <th>Price</th>
+                    <th>Booking</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in hotel.rooms.all %}
+                    <tr>
+                        <td>{{ room.room_number }}</td>
+                        <td>{{ room.capacity }}</td>
+                        <td>${{ room.price }}</td>
+                        <td>
+                            {% if not room.is_booked %}
+                                <a href="{% url 'book_room' room.id %}" style="color: green;font-size: 30px;text-align: center;" class="btn btn-primary"><u>Book Room</u></a>
+                            {% else %}
+                                <span class="text-danger" style="color:red;text-align: center;">Booked</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No rooms available.</p>
+    {% endif %}
+</body>
+</html>

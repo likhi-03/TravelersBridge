@@ -1,0 +1,233 @@
+{%extends 'index.html' %}
+{% load static %}
+
+{% block head %}
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% endblock head %}
+{% block body %}
+<div class="fh5co-hero">
+	<div class="fh5co-overlay"></div>
+	<div class="fh5co-cover" data-stellar-background-ratio="0.5"
+		style="background-image: url(https://wallpaperaccess.com/full/1287407.jpg);">
+		<div class="desc">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 col-md-5">
+						<!-- <a href="index.html" id="main-logo">Travel</a> -->
+						<div class="tabulation animate-box">
+
+							<!-- Nav tabs -->
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active">
+									<a href="#flights" aria-controls="flights"  data-toggle="tab">Flights</a>
+								</li>
+							</ul>
+
+							<!-- Tab panes -->
+							<div class="tab-content" >
+								<div role="tabpanel" class="tab-pane active" id="flights">
+									<form class="search-flight-form" action="{% url 'flights' %}" onsubmit="return flight_search()">
+									<div class="search-flight-form-data">
+									<div class="input-row">
+										<label for="flight-from">From: </label>
+										<input type="text" name="Origin" placeholder="From" id="flight-from" class="form-control mr-sm-3" onblur="hideplaces(this)" data-value="{{origin | lower}}" data-list="places_from" autocomplete="off" value="{{origin | upper}}">  <!--list="places_from"-->
+										<div id="places_from" class="places_box">
+											<div class="each_places_from_list places__list" data-value="del" onclick="selectplace(this)">Delhi (India)</div>
+											<div class="each_places_from_list places__list" data-value="bom" onclick="selectplace(this)">Mumbai (India)</div>
+											<div class="each_places_from_list places__list" data-value="bkk" onclick="selectplace(this)">Bangkok (Thailand)</div>
+											<div class="each_places_from_list places__list" data-value="nrt" onclick="selectplace(this)">Tokyo (Japan)</div>
+											<div class="each_places_from_list places__list" data-value="sin" onclick="selectplace(this)">Singapore (Singapore)</div>
+											<div class="each_places_from_list places__list" data-value="tpe" onclick="selectplace(this)">Taipei (Taiwan)</div>
+											<div class="each_places_from_list places__list" data-value="nyc" onclick="selectplace(this)">New York (USA)</div>
+										</div>
+									</div>
+									<div class="input-row">
+										<label for="flight_to">To: </label>
+										<input type="text" name="Destination" placeholder="To" id="flight-to" class="form-control mr-sm-3" onblur="hideplaces(this)" data-value="{{destination | lower}}" data-list="places_to" autocomplete="off" value="{{destination | upper}}">
+										<div id="places_to" class="places_box">
+											<div class="each_places_to_list places__list" data-value="del" onclick="selectplace(this)">Delhi (India)</div>
+											<div class="each_places_to_list places__list" data-value="bom" onclick="selectplace(this)">Mumbai (India)</div>
+											<div class="each_places_to_list places__list" data-value="bkk" onclick="selectplace(this)">Bangkok (Thailand)</div>
+											<div class="each_places_to_list places__list" data-value="nrt" onclick="selectplace(this)">Tokyo (Japan)</div>
+											<div class="each_places_to_list places__list" data-value="sin" onclick="selectplace(this)">Singapore (Singapore)</div>
+											<div class="each_places_to_list places__list" data-value="tpe" onclick="selectplace(this)">Taipei (Taiwan)</div>
+											<div class="each_places_to_list places__list" data-value="nyc" onclick="selectplace(this)">New York (USA)</div>
+										</div>
+									</div>
+									<div class="input-row">
+										<label for="depart_date">Departure Date: </label>
+										<input type="date" name="DepartDate" min="{{min_date}}" max="{{max_date}}" id="depart_date" placeholder="Date" class="form-control mr-sm-2" value="{{depart_date}}">
+									</div>
+									<div class="input-row">
+										<label for="seat_class">Class: </label>
+										<select name="SeatClass" id="SeatType" class="form-control mr-sm-2 selectpicker">
+											<option value="economy" {% if seat == 'economy' %}selected{% endif %}>Economy</option>
+											<option value="business" {% if seat == 'business' %}selected{% endif %}>Business</option>
+											<option value="first" {% if seat == 'first' %}selected{% endif %}>First</option>
+										</select>
+									</div>
+										<div class="col-xs-12">
+											<button style="margin:20px" type="submit" class="btn btn-primary btn-block">Search Flight</button>
+										</div>
+									</div>
+									</form>
+								</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div id="fh5co-tours" class="fh5co-section-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+				<h3>Book A Flight</h3>
+				<p>Select your travel dates and destination, choose your preferred flight, and provide passenger and
+					payment information.</p>
+			</div>
+		</div>
+		<div class="row row-bottom-padded-md">
+			<div class="col-md-12 animate-box">
+				<h2 class="heading-title">Todays Flight Deal</h2>
+			</div>
+			<div class="col-md-6 animate-box">
+				<div class="row">
+					<div class="col-md-12">
+						<h4>Better Deals, More Abilities</h4>
+						<p>By using price comparison sites, booking in advance, being flexible with travel dates and
+							times, and signing up for airline loyalty programs, travelers can find better deals and have
+							more abilities when booking flights.</p>
+					</div>
+					<div class="col-md-12">
+						<h4>Keep up with the news of your airline</h4>
+						<p>Staying up-to-date with the news of your airline, such as flight schedule changes or policy
+							updates, can help you prepare for your trip and avoid any potential issues or surprises.</p>
+					</div>
+					<div class="col-md-12">
+						<h4>In-Flight Experience</h4>
+						<p>The in-flight experience can vary based on airline, route, and class of service, but
+							typically includes amenities such as food and beverage service, in-flight entertainment, and
+							seat comfort.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 animate-box">
+				<img class="img-responsive"
+					src="https://i.pinimg.com/originals/ec/05/db/ec05dbb5deb17a06d30ee83f7b98d3f5.jpg" alt="travel">
+				<a href="#" class="flight-book">
+					<div class="plane-name">
+						<span class="p-flight">United States Airways</span>
+					</div>
+					<div class="desc">
+						<div class="left">
+							<h4>HK-MNL</h4>
+							<span>Dec 20 - Dec29</span>
+						</div>
+						<div class="right">
+							<span class="price">
+								<i class="icon-arrow-down22"></i>
+								$1000
+							</span>
+						</div>
+					</div>
+				</a>
+				<a href="#" class="flight-book">
+					<div class="plane-name">
+						<span class="p-flight">Qatar Airways</span>
+					</div>
+					<div class="desc">
+						<div class="left">
+							<h4>HK-MNL</h4>
+							<span>Dec 20 - Dec29</span>
+						</div>
+						<div class="right">
+							<span class="price">
+								<i class="icon-arrow-down22"></i>
+								$790
+							</span>
+						</div>
+					</div>
+				</a>
+				<a href="#" class="flight-book">
+					<div class="plane-name">
+						<span class="p-flight">Philippine Airline</span>
+					</div>
+					<div class="desc">
+						<div class="left">
+							<h4>MNL-HK</h4>
+							<span>Dec 20 - Dec29</span>
+						</div>
+						<div class="right">
+							<span class="price">
+								<i class="icon-arrow-down22"></i>
+								$500
+							</span>
+						</div>
+					</div>
+				</a>
+				<a href="#" class="flight-book">
+					<div class="plane-name">
+						<span class="p-flight">China Airways</span>
+					</div>
+					<div class="desc">
+						<div class="left">
+							<h4>HK-LAS</h4>
+							<span>Dec 20 - Dec29</span>
+						</div>
+						<div class="right">
+							<span class="price">
+								<i class="icon-arrow-down22"></i>
+								$900
+							</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="row">
+            <div class="col-md-4 col-sm-6 fh5co-tours animate-box">
+                <div href="#"><img
+                        src="https://www.freewalldownload.com/download/beautiful-statue-of-liberty-new-york-city-hd-wallpapers-download/"
+                        class="img-responsive">
+                    <div class="desc">
+                        <span></span>
+                        <h3>New York</h3>
+                        <span class="price">$1,000</span>
+                        <a class="btn btn-primary btn-outline" href="https://en.wikipedia.org/wiki/New_York_City">Explore Now <i class="icon-arrow-right22"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+                <div href="#"><img
+                        src="https://c1.wallpaperflare.com/preview/242/61/108/landscape-sunset-rice-terraces-tradition.jpg"
+                        class="img-responsive">
+                    <div class="desc">
+                        <span></span>
+                        <h3>Philippines</h3>
+                        <span class="price">$1,000</span>
+                        <a class="btn btn-primary btn-outline" href="https://en.wikipedia.org/wiki/Philippines">Explore Now <i class="icon-arrow-right22"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+                <div href="#"><img
+                        src="https://images.unsplash.com/photo-1536599018102-9f803c140fc1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aG9uZyUyMGtvbmd8ZW58MHx8MHx8&w=1000&q=80"
+                        class="img-responsive">
+                    <div class="desc">
+                        <span></span>
+                        <h3>Hongkong</h3>
+                        <span class="price">$1,000</span>
+                        <a class="btn btn-primary btn-outline" href="https://en.wikipedia.org/wiki/Hong_Kong">Explore Now <i class="icon-arrow-right22"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+{%endblock%}

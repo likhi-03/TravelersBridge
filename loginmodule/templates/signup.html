@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+<body>
+    <div class="fh5co-cover" data-stellar-background-ratio="0.5"style="background-image: url(https://images.unsplash.com/photo-1433838552652-f9a46b332c40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80); backdrop-filter: blur(5px);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header" style="background-color: #ef6f07;">
+                        <h4 class="modal-title">SignUp Here</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'handlesignup' %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input class="form-control" id="username" name="username"
+                                    placeholder="Choose a unique Username" type="text" required pattern="^[a-z]{3,15}$">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="f_name">First Name:</label>
+                                    <input type="text" class="form-control" id="f_name" name="f_name" placeholder="First Name"
+                                        required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="l_name">Last name:</label>
+                                    <input type="text" class="form-control" id="l_name" name="l_name" placeholder="Last name"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email1">Email:</label>
+                                <input type="email" class="form-control" id="email1" name="email1" placeholder="Enter Your Email"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone No:</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon">+91</span>
+                                    </div>
+                                    <input type="tel" class="form-control" id="phone" name="phone"
+                                        placeholder="Enter Your Phone Number" required pattern="[0-9]{10}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input class="form-control" id="password" name="password" placeholder="Enter Password"
+                                    type="password" required data-toggle="password">
+                            </div>
+                            <div class="form-group">
+                                <label for="password1">Re-enter Password:</label>
+                                <input class="form-control" id="password1" name="password1" placeholder="Re-enter Password"
+                                    type="password" required data-toggle="password">
+                            </div>
+                            <button class="btn btn-primary" type="submit">Signup</button>
+                        </form>
+                        <p class="mb-0 mt-1">Already have an account? <a href="{% url 'handleLogin' %}">Login here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

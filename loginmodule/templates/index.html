@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+{% load static %}
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Travel</title>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static '/css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static '/css/icomoon.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+	<!-- Superfish -->
+	<link rel="stylesheet" href="{% static '/css/superfish.css' %}">
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{% static '/css/magnific-popup.css' %}">
+	<!-- Date Picker -->
+	<link rel="stylesheet" href="{% static '/css/bootstrap-datepicker.min.css'%}">
+	<!-- CS Select -->
+	<link rel="stylesheet" href="{% static '/css/cs-select.css'%}">
+	<link rel="stylesheet" href="{% static '/css/cs-skin-border.css'%}">
+
+	<link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/layout_style.css' %}">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+	<script src="{% static '/js/modernizr-2.6.2.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/layout.js' %}"></script>
+	<script src="{% static '/js/index.js' %}"></script>
+	<style>
+		#scrollToTopBtn {
+  display: none; /* Hide the button by default */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+#scrollToTopBtn:hover {
+  background-color: #555;
+}
+.dropdown-item:active
+{
+	background-color: #ef6f07;
+}
+
+	</style>
+</head>
+
+<body>
+	<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+			<header id="fh5co-header-section" class="sticky-banner">
+				<div class="container">
+					<div class="nav-header">
+						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
+						<h1 id="fh5co-logo"><a href="{% url 'index' %}"><i class="icon-airplane"></i>Travel</a></h1>
+						<!-- START #fh5co-menu-wrap -->
+						<nav id="fh5co-menu-wrap" role="navigation">
+							<ul class="sf-menu" id="fh5co-primary-menu">
+								<li {% if request.path == '/travel/' %} class="active"{% endif %}><a href="{% url 'index' %}">Home</a></li>
+								<li {% if request.path == '/travel/vacation/' %} class="active"{% endif %}>
+									<a href="{% url 'vacation' %}" class="fh5co-sub-ddown">Vacations</a>
+								</li>
+								<li {% if request.path == '/travel/flight/' %} class="active"{% endif %}><a href="{% url 'flight' %}">Flights</a></li>
+								<li {% if request.path == '/travel/hotel/' %} class="active"{% endif %}><a href="{% url 'hotel' %}">Hotel</a></li>
+								<li {% if request.path == '/travel/car/' %} class="active"{% endif %}><a href="{% url 'car' %}">Car</a></li>
+								<li {% if request.path == '/travel/contact/' %} class="active"{% endif %}><a href="{% url 'contact' %}">Contact</a></li>
+								{% if user.is_authenticated %}
+									<li class="nav-item dropdown">
+									  <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown" style="border-color: #ef6f07;"> {{request.user}}</a>
+									  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="{%url 'bookings' %}">Flight Bookings</a>
+										<a class="dropdown-item" href="{%url 'my_bookings' %}">Hotel Bookings</a>
+										<a class="dropdown-item" href="{%url 'handleLogout' %}">Logout</a>
+									  </div>
+									</li>
+								{% else %}
+								<!-- Button trigger Login modal -->
+								<li><a class="btn btn-primary btn-outline" href="{% url 'handleLogin'%}">Login</a></li>
+								<li><a class="btn btn-primary btn-outline" href="{% url 'handlesignup'%}">sign up</a></li>
+								{% endif %}
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+		{% if messages %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }} alert-dismissible mb-0" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+			{{ message }}
+		</div>
+		{% endfor %}
+		{% endif %}
+		{% block body %} {% endblock %}
+
+		<!-- fh5co-blog-section -->
+		<div id="fh5co-testimonial" style="background-image:url(images/img_bg_1.jpg);">
+			<div class="container">
+				<div class="row animate-box">
+					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+						<h2>Happy Clients</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="box-testimony animate-box">
+							<blockquote>
+								<span class="quote"><span><i class="icon-quotes-right"></i></span></span>
+								<p>&ldquo;Thank you for your help in booking my trip. The flights were smooth and
+									the hotel was just as described. It was the perfect getaway and I appreciate
+									your assistance in making it happen.&rdquo;</p>
+							</blockquote>
+							<p class="author">Sarvesh Aggerwal</p>
+						</div>
+
+					</div>
+					<div class="col-md-4">
+						<div class="box-testimony animate-box">
+							<blockquote>
+								<span class="quote"><span><i class="icon-quotes-right"></i></span></span>
+								<p>&ldquo;I just wanted to thank you for suggesting that tour company for my trip to
+									Asia. The itinerary was well-planned and the accommodations were top-notch. I
+									had a fantastic time and couldn't be happier with the experience. Thanks
+									again!&rdquo;</p>
+							</blockquote>
+							<p class="author">Lily Potter</p>
+						</div>
+
+
+					</div>
+					<div class="col-md-4">
+						<div class="box-testimony animate-box">
+							<blockquote>
+								<span class="quote"><span><i class="icon-quotes-right"></i></span></span>
+								<p>&ldquo;I'm writing to express my gratitude for your help in rescheduling my
+									flight. I was worried it would be a hassle, but you made the process seamless
+									and stress-free. I appreciate your prompt and professional service. Thank
+									you!&rdquo;</p>
+							</blockquote>
+							<p class="author">Mark Jenson</p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#" id="scrollToTopBtn" title="Scroll to Top"><i class="fas fa-arrow-up"></i></a>
+
+		<footer>
+			<div id="footer">
+				<div class="container">
+					<div class="row row-bottom-padded-md">
+						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+							<h3>About Travel</h3>
+							<p>Travel broadens the mind, offers new experiences, and allows us to explore the world
+								beyond our immediate surroundings.</p>
+						</div>
+						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+							<h3>Top Flights Routes</h3>
+							<ul>
+								<li><a href="#">Manila flights</a></li>
+								<li><a href="#">Dubai flights</a></li>
+								<li><a href="#">Bangkok flights</a></li>
+								<li><a href="#">Tokyo Flight</a></li>
+								<li><a href="#">New York Flights</a></li>
+							</ul>
+						</div>
+						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+							<h3>Top Hotels</h3>
+							<ul>
+								<li><a href="#">Boracay Hotel</a></li>
+								<li><a href="#">Dubai Hotel</a></li>
+								<li><a href="#">Singapore Hotel</a></li>
+								<li><a href="#">Manila Hotel</a></li>
+							</ul>
+						</div>
+						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+							<h3>Interest</h3>
+							<ul>
+								<li><a href="#">Beaches</a></li>
+								<li><a href="#">Family Travel</a></li>
+								<li><a href="#">Budget Travel</a></li>
+								<li><a href="#">Food &amp; Drink</a></li>
+								<li><a href="#">Honeymoon and Romance</a></li>
+							</ul>
+						</div>
+						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+							<h3>Best Places</h3>
+							<ul>
+								<li><a href="#">Boracay Beach</a></li>
+								<li><a href="#">Dubai</a></li>
+								<li><a href="#">Singapore</a></li>
+								<li><a href="#">Hongkong</a></li>
+							</ul>
+						</div>
+						<div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+							<h3>Affordable</h3>
+							<ul>
+								<li><a href="#">Food &amp; Drink</a></li>
+								<li><a href="#">Fare Flights</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center">
+							<p class="fh5co-social-icons">
+								<a href="#"><i class="icon-twitter2"></i></a>
+								<a href="#"><i class="icon-facebook2"></i></a>
+								<a href="#"><i class="icon-instagram"></i></a>
+								<a href="#"><i class="icon-dribbble2"></i></a>
+								<a href="#"><i class="icon-youtube"></i></a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+
+	</div>
+	<!-- END fh5co-page -->
+
+	</div>
+	<!-- END fh5co-wrapper -->
+
+	<!-- jQuery -->
+
+
+	<script src="{% static '/js/jquery.min.js' %}"></script>
+	<!-- jQuery Easing -->
+	<script src="{% static '/js/jquery.easing.1.3.js' %}"></script>
+	<!-- Bootstrap -->
+	<script src="{% static '/js/bootstrap.min.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static '/js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static '/js/sticky.js' %}"></script>
+
+	<!-- Stellar -->
+	<script src="{% static '/js/jquery.stellar.min.js' %}"></script>
+	<!-- Superfish -->
+	<script src="{% static '/js/hoverIntent.js' %}"></script>
+	<script src="{% static '/js/superfish.js'  %}"></script>
+	<!-- Magnific Popup -->
+	<script src="{% static '/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static '/js/magnific-popup-options.js' %}"></script>
+	<!-- Date Picker -->
+	<script src="{% static '/js/bootstrap-datepicker.min.js' %}"></script>
+	<!-- CS Select -->
+	<script src="{% static '/js/classie.js' %}"></script>
+	<script src="{% static '/js/selectFx.js' %}"></script>
+
+	<!-- Main JS -->
+	<script src="{% static '/js/main.js' %}"></script>
+
+	<script>
+		window.addEventListener('scroll', function() {
+  var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+  if (window.pageYOffset > 100) {
+    // Show the button when the user scrolls down 100px from the top
+    scrollToTopBtn.style.display = 'block';
+  } else {
+    // Hide the button when the user is at the top of the page
+    scrollToTopBtn.style.display = 'none';
+  }
+});
+
+document.getElementById('scrollToTopBtn').addEventListener('click', function() {
+  // Scroll the page to the top when the button is clicked
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // Use smooth scrolling behavior for a smooth transition
+  });
+});
+
+	</script>
+</body>
+
+</html>

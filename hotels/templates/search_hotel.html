@@ -1,0 +1,162 @@
+<html>
+{% load static %}
+<head>
+    <style>
+        .button-77 
+        { 
+            align-items: center; 
+            appearance: none; 
+            background-clip: padding-box; 
+            background-color: initial; 
+            background-image: none; 
+            border-style: none; 
+            box-sizing: border-box; 
+            color: #fff; 
+            cursor: pointer; 
+            display: inline-block; 
+            flex-direction: row; 
+            flex-shrink: 0; 
+            font-family: Eina01,sans-serif; 
+            font-size: 16px; 
+            font-weight: 800; 
+            justify-content: center; 
+            line-height: 24px; 
+            margin: 0; 
+            min-height: 64px; 
+            outline: none; 
+            overflow: visible; 
+            padding: 19px 26px; 
+            pointer-events: auto; 
+            position: relative; 
+            text-align: center; 
+            text-decoration: none; 
+            text-transform: none; 
+            user-select: none; 
+            -webkit-user-select: none; 
+            touch-action: manipulation; 
+            vertical-align: middle; 
+            width: auto; 
+            word-break: keep-all; 
+            z-index: 0; 
+        } 
+        @media (min-width: 768px) 
+        { 
+            .button-77 
+            { 
+                padding: 19px 32px; 
+            } 
+        } 
+        .button-77:before, .button-77:after 
+        { 
+            border-radius: 80px; 
+        } 
+        .button-77:before 
+        { 
+            background-color: rgba(249, 58, 19, .32); 
+            content: ""; 
+            display: block; 
+            height: 100%; 
+            left: 0; 
+            overflow: hidden; 
+            position: absolute; 
+            top: 0; 
+            width: 100%; 
+            z-index: -2; 
+        }
+        .row 
+        {
+            margin: 0 -5px;
+        }
+        body {
+  text-align: center;
+  padding: 30px;
+  background: #ffcb9d;
+  font-family: Arial;
+}
+
+.a-box {
+  display: inline-block;
+  width: 280px;
+  text-align: center;
+  margin: 40px;
+  margin-left: 90px;
+  float:left;
+}
+
+.img-container {
+    height: 230px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 0px 0px 20px 20px;
+    display: inline-block;
+}
+
+.img-container img {
+    transform: skew(0deg, -13deg);
+    height: 250px;
+    margin: -35px 0px 0px -70px;
+}
+
+.inner-skew {
+    display: inline-block;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 0px;
+    transform: skew(0deg, 13deg);
+    font-size: 0px;
+    margin: 30px 0px 0px 0px;
+    background: #c8c2c2;
+    height: 250px;
+    width: 200px;
+}
+
+.text-container {
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  padding: 120px 20px 20px 20px;
+  border-radius: 20px;
+  background: #fff;
+  margin: -120px 0px 0px 0px;
+  line-height: 19px;
+  height: 250px;
+  font-size: 14px;
+}
+
+.text-container h3 {
+  margin: 20px 0px 10px 0px;
+  color: #04bcff;
+  font-size: 18px;
+}
+    </style>
+</head>
+<body>
+    {% if hotels %}
+    <div class="row">
+        {% for hotel in hotels %}
+        <div class="a-box">
+            <div class="card">
+                <div class="img-container">
+                    <div class="img-inner">
+                      <div class="inner-skew">
+                          <img src="{{ hotel.image.url }}" class="card-img-top" alt="{{ hotel.name }}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-container">
+                    <h2 style="color: #000;">{{ hotel.name }}</h2>
+                    <div>
+                      <p>Location: {{ hotel.location }}</p>
+                      <p>Rating: {{ hotel.rating }}</p>
+                    </div>
+                    <a><button class="button-77" role="button" ><a href="{% url 'hotel_details' hotel.name %}">View Details</a></button></a>
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No hotels found.</p>
+    {% endif %}
+</body>
+
+</html>

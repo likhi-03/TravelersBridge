@@ -1,0 +1,68 @@
+{%extends 'index.html' %}
+{% block body %}
+{% load static%}
+{% block head %}
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% endblock head %}
+		<div class="fh5co-hero">
+			<div class="fh5co-overlay"></div>
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(https://images.unsplash.com/photo-1547744152-14d985cb937f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Zm9yZCUyMG11c3Rhbmd8ZW58MHx8MHx8&w=1000&q=80);">
+				<div class="desc">
+					<div class="container">
+						<div class="row">
+							<div class="desc2 animate-box">
+								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
+									<h2>Exclusive Limited Time Offer</h2>
+									<h3>Fly to Hong Kong via Los Angeles, USA</h3>
+									<span class="price">$599</span>
+									<!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+
+		<div id="fh5co-car" class="fh5co-section-gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+						<h3>Car Rent In U.S.</h3>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+					</div>
+				</div>
+				<div class="row row-bottom-padded-md">
+					<div class="col-md-6 animate-box">
+						<div class="car">
+							<div class="one-4">
+								<h3>Economy</h3>
+								<span class="price">$100<small> / day</small></span>
+								<span class="price">$200<small> / week</small></span>
+								<span class="price">$250<small> / mos.</small></span>
+								<span class="price">$350<small> Total (Tax incl.)</small></span>
+							</div>
+							<div class="one-1" style="background-image: url(https://o.aolcdn.com/images/dims3/GLOB/crop/1458x821+226+175/resize/800x450!/format/jpg/quality/85/https://s.yimg.com/os/creatr-uploaded-images/2019-05/9fce74a0-7d64-11e9-bffd-99e5b68c39d7);">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 animate-box">
+						<div class="car">
+							<div class="one-4">
+								<h3>Luxury</h3>
+								<span class="price">$150<small> / day</small></span>
+								<span class="price">$250<small> / week</small></span>
+								<span class="price">$300<small> / mos.</small></span>
+								<span class="price">$400<small> Total (Tax incl.)</small></span>
+							</div>
+							<div class="one-1" style="background-image: url(https://images.unsplash.com/flagged/photo-1553505192-acca7d4509be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80);">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		{% endblock %}
